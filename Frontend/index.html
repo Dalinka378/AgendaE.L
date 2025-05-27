@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Agenda Evenimente Locale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Agenda de Evenimente Locale</h1>
+    <nav>
+      <ul>
+        <li><a href="register.html">Înregistrare</a></li>
+        <li><a href="login.html">Autentificare</a></li>
+        <li><a href="evenimente.html">Evenimente</a></li>
+        <li><a href="profile.html">Profil</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Bine ai venit!</h2>
+    <p id="welcome-msg"></p>
+    <p>
+      <a href="register.html" id="register-link"><button>Înregistrează-te</button></a>
+      <a href="login.html" id="login-link"><button>Autentifică-te</button></a>
+    </p>
+  </main>
+
+  <script>
+    const welcomeMsg = document.getElementById('welcome-msg');
+    const registerLink = document.getElementById('register-link');
+    const loginLink = document.getElementById('login-link');
+
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+    if (loggedInUser) {
+      welcomeMsg.textContent = `Bun venit, ${loggedInUser.username}!`;
+      registerLink.style.display = 'none';
+      loginLink.style.display = 'none';
+    } else {
+      welcomeMsg.textContent = 'Te rugăm să te înregistrezi sau să te autentifici.';
+    }
+  </script>
+</body>
+</html>
