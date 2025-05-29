@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <title>Adaugă Eveniment Nou</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><a href="evenimente.html">Înapoi la Evenimente</a></li>
+    <li><a href="profile.html">Profil</a></li>
+    <li><button id="logout-btn">Deloghează-te</button></li>
+  </ul>
+</nav>
+
+<h1>Formular Adăugare Eveniment</h1>
+
+<form id="event-form">
+  <input type="text" id="title" placeholder="Titlu eveniment" required /><br><br>
+  <input type="date" id="date" required /><br><br>
+  <textarea id="description" placeholder="Descriere" required></textarea><br><br>
+  <button type="submit">Adaugă Eveniment</button>
+</form>
+
+<script src="adauga_eveniment.js"></script>
+<script src="main.js"></script>
+
+</body>
+</html>
