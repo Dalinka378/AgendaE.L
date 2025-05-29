@@ -1,3 +1,15 @@
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'root';
+
+
+-- Acordare privilegii complete asupra bazei TaskManagerDB
+GRANT ALL PRIVILEGES ON TaskManagerDB.* TO 'admin'@'localhost';
+
+
+-- Aplicare privilegii
+FLUSH PRIVILEGES;
+
+SELECT User, Host FROM mysql.user;
+
 CREATE TABLE Users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     username VARCHAR(50) NOT NULL UNIQUE,
