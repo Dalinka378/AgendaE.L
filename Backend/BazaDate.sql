@@ -8,7 +8,7 @@ GRANT ALL PRIVILEGES ON TaskManagerDB.* TO 'admin'@'localhost';
 -- Aplicare privilegii
 FLUSH PRIVILEGES;
 
-SELECT User, Host FROM mysql.user;
+SELECT User, Host FROM mysql.user;git 
 
 CREATE TABLE Users (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
