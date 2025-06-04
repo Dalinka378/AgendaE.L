@@ -3,29 +3,82 @@
 <head>
   <meta charset="UTF-8" />
   <title>Adaugă Eveniment Nou</title>
-  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Regula CSS pentru a ascunde formularul inițial */
+    .hidden-form {
+      display: none;
+    }
+  </style>
 </head>
 <body>
 
-<nav>
-  <ul>
-    <li><a href="evenimente.html">Înapoi la Evenimente</a></li>
-    <li><a href="profile.html">Profil</a></li>
-    <li><button id="logout-btn">Deloghează-te</button></li>
-  </ul>
-</nav>
+<h1>Evenimente</h1>
 
-<h1>Formular Adăugare Eveniment</h1>
+<button id="show-form-btn">Adaugă Eveniment</button>
 
-<form id="event-form">
+<form id="event-form" class="hidden-form">
   <input type="text" id="title" placeholder="Titlu eveniment" required /><br><br>
   <input type="date" id="date" required /><br><br>
   <textarea id="description" placeholder="Descriere" required></textarea><br><br>
   <button type="submit">Adaugă Eveniment</button>
 </form>
 
-<script src="adauga_eveniment.js"></script>
-<script src="main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Verificare login
+  const user = JSON.parse(localStorage.getItem('loggedInUser'));
+  if (!user) {
+    window.location.href = 'login.html';
+    return;
+  }
+
+  const showFormBtn = document.getElementById('show-form-btn');
+  const eventForm = document.getElementById('event-form');
+
+  // La click pe buton:
+  showFormBtn.addEventListener('click', () => {
+    // Afișează formularul (eliminând clasa "hidden-form" și adăugând "block")
+    eventForm.classList.remove('hidden-form'); // Elimină clasa care-l ascunde
+    eventForm.style.display = 'block'; // Asigură-te că este display block
+    showFormBtn.style.display = 'none'; // Ascunde butonul
+  });
+
+  // Când trimiți formularul
+  eventForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value.trim();
+    const date = document.getElementById('date').value;
+    const description = document.getElementById('description').value.trim();
+
+    if (!title || !date || !description) {
+      alert('Completează toate câmpurile!');
+      return;
+    }
+
+    const events = JSON.parse(localStorage.getItem('events')) || [];
+
+    events.push({
+      title,
+      date,
+      description,
+      createdBy: user.username,
+    });
+
+    localStorage.setItem('events', JSON.stringify(events));
+
+    alert('Eveniment adăugat!');
+    // Redirecționează către pagina de evenimente după adăugare
+    window.location.href = 'evenimente.html';
+
+    // Opțional: resetează formularul, ascunde-l, și arată butonul înapoi
+    eventForm.reset();
+    eventForm.classList.add('hidden-form'); // Ascunde din nou folosind clasa
+    eventForm.style.display = ''; // Resetează display-ul (poate fi lăsat gol sau 'none')
+    showFormBtn.style.display = 'inline-block';
+  });
+});
+</script>
 
 </body>
 </html>
