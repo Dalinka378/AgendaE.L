@@ -1,20 +1,56 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <title>Înregistrare</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Înregistrare</title>
+    <link rel="stylesheet" href="style.css">
+    </head>
 <body>
-  <h2>Înregistrare</h2>
-  <form id="register-form">
-    <input type="text" id="username" placeholder="Nume complet" required />
-    <input type="email" id="email" placeholder="Email / iCloud" required />
-    <input type="password" id="password" placeholder="Parolă" required />
-    <input type="password" id="confirm-password" placeholder="Confirmă parola" required />
-    <button type="submit">Înregistrează-te</button>
-  </form>
+    <header class="main-header">
+        <h1><a href="index.html">Agenda de Evenimente Locale</a></h1>
+        <nav class="main-nav">
+            <ul>
+                <li id="nav-register-link"><a href="register.html">Înregistrare</a></li>
+                <li id="nav-login-link"><a href="login.html">Autentificare</a></li>
+                <li><a href="evenimente.html">Evenimente</a></li>
+                <li><a href="profile.html">Profil</a></li>
+                <li id="nav-add-event-link" style="display:none;"><a href="adauga-eveniment.html">Adaugă Eveniment</a></li>
+                <li id="nav-logout-btn-container" style="display:none;"><button id="nav-logout-btn">Deconectare</button></li>
+            </ul>
+        </nav>
+    </header>
 
-  <script src="register.js" defer></script>
+    <main class="register-page-content">
+        <div class="container mx-auto p-4 pt-6 mt-10 bg-white rounded shadow-md form-container">
+            <h2 class="text-3xl font-bold mb-4">Înregistrare</h2>
+            <form id="register-form"> <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="username">Utilizator:</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Utilizator" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="email">Email:</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" type="email" placeholder="Email" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">Parolă:</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="Parolă" required />
+                </div>
+                <div class="mb-4">
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="confirm-password">Confirmă parolă:</label>
+                    <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="confirm-password" type="password" placeholder="Confirmă parolă" required />
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">Înregistrare</button>
+                    <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="login.html">
+                        Ai deja cont? Autentifică-te
+                    </a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script src="main.js"></script>
+    <script src="register.js"></script>
 </body>
 </html>

@@ -1,35 +1,38 @@
-const loginForm = document.getElementById('login-form');
+// login.js - Logica specifică pentru pagina de autentificare
 
-loginForm.addEventListener('submit', (e) => {
-  e.preventDefault();
+document.addEventListener('DOMContentLoaded', () => {
+    const loginForm = document.getElementById('login-form'); // Acesta caută formularul cu ID-ul 'login-form'
 
-  const emailOrPhone = document.getElementById('email-phone').value.trim();
-  const password = document.getElementById('password').value.trim();
+    if (loginForm) { // Asigură-te că formularul există pe pagină înainte de a adăuga event listener
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault(); // Oprește reîncărcarea paginii
 
-  if (!emailOrPhone || !password) {
-    alert('Te rog completează toate câmpurile!');
-    return;
-  }
+            const emailOrPhone = document.getElementById('email-phone').value.trim();
+            const password = document.getElementById('password').value.trim();
 
-  const users = JSON.parse(localStorage.getItem('users')) || [];
+            if (!emailOrPhone || !password) {
+                alert('Te rog completează toate câmpurile!');
+                return;
+            }
 
-  // Căutăm utilizatorul după email sau telefon
-  const user = users.find(u => u.email === emailOrPhone || u.phone === emailOrPhone);
+            const users = JSON.parse(localStorage.getItem('users')) || [];
 
-  if (!user) {
-    alert('Utilizatorul nu există!');
-    return;
-  }
+            // Căutăm utilizatorul după email sau telefon
+            const user = users.find(u => u.email === emailOrPhone || u.phone === emailOrPhone);
 
-  if (user.password !== password) {
-    alert('Parola este greșită!');
-    return;
-  }
+            if (!user) {
+                alert('Utilizatorul nu există!');
+                return;
+            }
 
-  // Dacă totul e OK:
-  localStorage.setItem('loggedInUser', JSON.stringify(user));
-  alert('Autentificare reușită!');
+            if (user.password !== password) {
+                alert('Parola este greșită!');
+                return;
+            }
+            localStorage.setItem('loggedInUser', JSON.stringify(user)); // Salvează utilizatorul logat
+            alert('Autentificare reușită!');
 
-  // Redirecționare
-  window.location.href = 'evenimente.html';
+            window.location.href = 'index.html';
+        });
+    }
 });

@@ -1,97 +1,48 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <title>Agenda Evenimente Locale</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Evenimente Locale</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header>
-    <h1>Agenda de de Evenimente Locale</h1>
-    <nav>
-      <ul>
-        <li><a href="register.html">Înregistrare</a></li>
-        <li><a href="login.html">Autentificare</a></li>
-        <li><a href="evenimente.html">Evenimente</a></li>
-        <li><a href="profile.html">Profil</a></li>
-      </ul>
-    </nav>
-  </header>
-  
-  <main>
-    <h2>Bine ai venit!</h2>
-    <p id="welcome-msg"></p>
-    <p>
-      <a href="register.html" id="register-link"><button>Înregistrează-te</button></a>
-      <a href="login.html" id="login-link"><button>Autentifică-te</button></a>
-    </p>
+    <header class="main-header">
+        <h1><a href="index.html">Agenda de Evenimente Locale</a></h1>
+        <nav class="main-nav">
+            <ul>
+                <li id="nav-register-link"><a href="register.html">Înregistrare</a></li>
+                <li id="nav-login-link"><a href="login.html">Autentificare</a></li>
+                <li><a href="evenimente.html">Evenimente</a></li>
+                <li><a href="profile.html">Profil</a></li>
+                <li id="nav-add-event-link" style="display:none;"><a href="adauga-eveniment.html">Adaugă Eveniment</a></li>
+                <li id="nav-logout-btn-container" style="display:none;"><button id="nav-logout-btn">Deconectare</button></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle-btn">
+                        <span class="icon">☀️</span> <span class="text">Mod Întunecat</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-<section>
-  <h2>Încarcă un document</h2>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <input 
-      type="file" 
-      id="fileInput" 
-      name="file" 
-      accept=".pdf,.docx,.xls,.xlsx" 
-      required 
-    />
-    <button type="submit">Încarcă</button>
-  </form>
-  <p id="uploadStatus"></p>
-</section>
+    <main class="index-main-content">
+        <section class="welcome-section">
+            <h2>Bine ai venit!</h2>
+            <p id="welcome-msg">Te rugăm să te înregistrezi sau să te autentifici pentru a accesa toate funcționalitățile.</p>
+            <div class="auth-buttons">
+                <a href="register.html" id="register-link-main"><button>Înregistrează-te</button></a>
+                <a href="login.html" id="login-link-main"><button>Autentifică-te</button></a>
+            </div>
+        </section>
 
-<script>
-  const uploadForm = document.getElementById('uploadForm');
-  const fileInput = document.getElementById('fileInput');
-  const uploadStatus = document.getElementById('uploadStatus');
+        <section class="about-section">
+            <h2>Despre Agenda Evenimente Locale</h2>
+            <p>Platforma noastră îți aduce la îndemână cele mai interesante evenimente locale din orașul tău. Fie că ești pasionat de concerte, expoziții de artă, târguri tradiționale sau evenimente sportive, aici vei găsi mereu ceva pe placul tău.</p>
+            <p>Înregistrează-te pentru a adăuga propriile evenimente, a gestiona profilul tău și a interacționa cu comunitatea!</p>
+        </section>
+    </main>
 
-  uploadForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-
-    const file = fileInput.files[0];
-    if (!file) {
-      uploadStatus.textContent = 'Te rugăm să selectezi un fișier.';
-      return;
-    }
-
-    const formData = new FormData();
-    formData.append('file', file);
-
-    try {
-      const response = await fetch('/api/upload', {  
-        method: 'POST',
-        body: formData
-      });
-
-      if (response.ok) {
-        uploadStatus.textContent = 'Fișierul a fost încărcat cu succes!';
-        fileInput.value = '';  
-      } else {
-        const errorData = await response.json();
-        uploadStatus.textContent = `Eroare la încărcare: ${errorData.message || response.statusText}`;
-      }
-    } catch (error) {
-      uploadStatus.textContent = 'A apărut o eroare la încărcare.';
-      console.error(error);
-    }
-  });
-</script>
-
-  <script>
-    const welcomeMsg = document.getElementById('welcome-msg');
-    const registerLink = document.getElementById('register-link');
-    const loginLink = document.getElementById('login-link');
-
-    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
-
-    if (loggedInUser) {
-      welcomeMsg.textContent = `Bun venit, ${loggedInUser.username}!`;
-      registerLink.style.display = 'none';
-      loginLink.style.display = 'none';
-    } else {
-      welcomeMsg.textContent = 'Te rugăm să te înregistrezi sau să te autentifici.';
-    }
-  </script>
+    <script src="main.js"></script>
 </body>
 </html>

@@ -1,4 +1,3 @@
-// Verificăm dacă utilizatorul este logat
 const user = JSON.parse(localStorage.getItem('loggedInUser'));
 if (!user) {
   window.location.href = 'login.html';
@@ -57,26 +56,30 @@ eventForm.addEventListener('submit', (e) => {
 
   afiseazaEvenimente();
 });
-document.addEventListener("DOMContentLoaded", () => {
-    const slider = document.querySelector(".slider-images");
-    const images = document.querySelectorAll(".slider-images img");
-    const prevButton = document.getElementById("prev");
-    const nextButton = document.getElementById("next");
-    const totalImages = images.length;
-    let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const sliderImages = document.querySelector('.slider-images');
+    const images = document.querySelectorAll('.slider-images img');
+    const prevBtn = document.getElementById('prev');
+    const nextBtn = document.getElementById('next');
 
+    let currentIndex = 0; 
+    const totalImages = images.length; 
     function updateSlider() {
-        const offset = -currentIndex * 100;
-        slider.style.transform = `translateX(${offset}%)`;
+        sliderImages.style.transform = `translateX(${-currentIndex * 100}%)`;
     }
-
-    prevButton.addEventListener("click", () => {
-        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+    nextBtn.addEventListener('click', () => {
+        currentIndex++;
+        if (currentIndex >= totalImages) {
+            currentIndex = 0; 
+        }
         updateSlider();
     });
-
-    nextButton.addEventListener("click", () => {
-        currentIndex = (currentIndex + 1) % totalImages;
+    prevBtn.addEventListener('click', () => {
+        currentIndex--;
+        if (currentIndex < 0) {
+            currentIndex = totalImages - 1; 
+        }
         updateSlider();
     });
+    updateSlider();
 });
