@@ -1,40 +1,43 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <title>Agenda Evenimente Locale</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Evenimente Locale</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<nav>
-  <ul>
-    <li><a href="evenimente.html">Evenimente</a></li>
-    <li><a href="profile.html">Profil</a></li>
-    <li><button id="logout-btn">Deloghează-te</button></li>
-  </ul>
-</nav>
+  <nav class="navbar">
+    <h2>Evenimente Locale</h2>
+    <button id="logoutBtn">Logout</button>
+  </nav>
 
-<h1>Evenimente Locale</h1>
+  <!-- Slider -->
+  <div class="slider-container">
+    <div class="slider-images">
+      <img src="poze/1.jpg" alt="img1">
+      <img src="poze/2.jpg" alt="img2">
+      <img src="poze/3.jpg" alt="img3">
+    </div>
+    <button id="prev">⏪</button>
+    <button id="next">⏩</button>
+  </div>
 
-<section id="lista-evenimente">
-  <ul id="events-ul"></ul>
-</section>
+  <!-- Formular adăugare eveniment -->
+  <section class="form-container">
+    <form id="event-form">
+      <input type="text" id="title" placeholder="Titlu eveniment" required>
+      <input type="date" id="date" required>
+      <textarea id="description" placeholder="Descriere" required></textarea>
+      <button type="submit">Adaugă Eveniment</button>
+    </form>
+  </section>
 
-<section id="sectiune-adauga">
-  <button id="btn-adauga">Adaugă Eveniment Nou</button>
-</section>
+  <!-- Aici se afișează evenimentele -->
+  <main class="events-container" id="events-ul">
+    <!-- Populat din JS -->
+  </main>
 
-<script src="evenimente.js"></script>
-<script src="main.js"></script>
-
-<script>
-  // Butonul duce la pagina formularului
-  document.getElementById('btn-adauga').addEventListener('click', () => {
-    window.location.href = 'adauga_eveniment.html';
-  });
-</script>
-<button id="btn-inapoi" class="btn-inapoi">← Înapoi</button>
-
+  <script src="evenimente.js"></script>
 </body>
 </html>

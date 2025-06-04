@@ -57,3 +57,26 @@ eventForm.addEventListener('submit', (e) => {
 
   afiseazaEvenimente();
 });
+document.addEventListener("DOMContentLoaded", () => {
+    const slider = document.querySelector(".slider-images");
+    const images = document.querySelectorAll(".slider-images img");
+    const prevButton = document.getElementById("prev");
+    const nextButton = document.getElementById("next");
+    const totalImages = images.length;
+    let currentIndex = 0;
+
+    function updateSlider() {
+        const offset = -currentIndex * 100;
+        slider.style.transform = `translateX(${offset}%)`;
+    }
+
+    prevButton.addEventListener("click", () => {
+        currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+        updateSlider();
+    });
+
+    nextButton.addEventListener("click", () => {
+        currentIndex = (currentIndex + 1) % totalImages;
+        updateSlider();
+    });
+});
