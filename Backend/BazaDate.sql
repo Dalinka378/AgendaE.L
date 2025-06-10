@@ -1,11 +1,7 @@
-CREATE USER 'admin'@'localhost' IDENTIFIED BY 'root';
+CREATE USER 'admin'@'localhost' IDENTIFIED BY 'Admin123';
 
-
--- Acordare privilegii complete asupra bazei TaskManagerDB
 GRANT ALL PRIVILEGES ON TaskManagerDB.* TO 'admin'@'localhost';
 
-
--- Aplicare privilegii
 FLUSH PRIVILEGES;
 
 SELECT User, Host FROM mysql.user;git 

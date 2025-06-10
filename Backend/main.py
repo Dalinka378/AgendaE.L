@@ -7,10 +7,10 @@ app = Flask(__name__)
 
 # Configurația pentru conexiunea la MariaDB
 DATABASE_CONFIG = {
-    'user': 'username',  # înlocuiește cu utilizatorul tău
-    'password': 'password',  # înlocuiește cu parola ta
-    'host': 'localhost',
-    'database': 'database_name'  # înlocuiește cu numele bazei tale de date
+    'user': 'Admin',  # înlocuiește cu utilizatorul tău
+    'password': 'Admin123',  # înlocuiește cu parola ta
+    'host': 'admin'@'localhost',
+    'database': 'TaskManagerDB'  # înlocuiește cu numele bazei tale de date
 }
 
 def init_db():
