@@ -236,3 +236,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+const inputFile = document.getElementById('profile-pic-input');
+const uploadBtn = document.getElementById('upload-btn');
+const imgPreview = document.getElementById('profile-preview');
+
+uploadBtn.addEventListener('click', () => {
+  inputFile.click();
+});
+
+inputFile.addEventListener('change', () => {
+  const file = inputFile.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = e => {
+      imgPreview.src = e.target.result;
+    };
+    reader.readAsDataURL(file);
+  }
+});
+
+    imgPreview.addEventListener("click", () => {
+      inputFile.click();
+    });
