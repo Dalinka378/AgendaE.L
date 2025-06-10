@@ -1,7 +1,12 @@
-ideea site-ului este de a crea o Agenda de Evenimente Locale care sa contina fisiere pdf , xls , docx .
-va detine autentificarea și o baza de date unde se vor salva tot necesarul.
-parola de autentificare nu trebuie sa aibă mai putin de 8 caractere ( minim 2 cifre ) 
-te vei putea autentifica cu numarul de telefon sau gmail/icloud
-va fi nevoie de creat profil personal 
-crearea unei poste de comunicare 
+Ideea site-ului este de a crea o Agenda de Evenimente Locale care să permită stocarea și accesarea fișierelor în formate PDF, XLS și DOCX.
+
+Site-ul va include autentificare și o bază de date unde se vor salva toate informațiile necesare.
+
+Parola pentru autentificare trebuie să aibă minimum 8 caractere, dintre care cel puțin 2 trebuie să fie cifre.
+
+Autentificarea se va putea realiza folosind numărul de telefon sau contul de Gmail/ICloud.
+
+Va fi necesară crearea unui profil personal.
+
+De asemenea, utilizatorii vor putea crea postări pentru comunicare.
 
