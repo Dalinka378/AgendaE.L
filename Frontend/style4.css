@@ -1,0 +1,32 @@
+ body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f0f0f0;
+            display: flex; /* Aranjează containerele pe un rând */
+            justify-content: space-around; /* Spațiază-le uniform */
+            flex-wrap: wrap; /* Permite trecerea pe rândul următor pe ecrane mici */
+        }
+
+        .imagine-container {
+            background-color: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 15px; /* Spațiu între containere */
+            width: 300px; /* Lățimea fiecărui container */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .imagine-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 3px;
+            margin-bottom: 8px;
+        }
+
+        .descriere-imagine {
+            font-size: 0.9em;
+            color: #555;
+            line-height: 1.3;
+        }
