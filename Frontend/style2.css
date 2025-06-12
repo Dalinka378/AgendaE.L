@@ -10,17 +10,16 @@
 }
 
 .dark-mode {
-    --bg-color: #121212;            /* fundal închis, aproape negru */
-    --text-color: #e0e0e0;          /* text gri deschis pentru contrast */
-    --primary-color: #66b3ff;       /* albastru deschis */
-    --secondary-color: #4da6ff;     /* albastru mediu */
-    --card-bg: #1e1e1e;             /* fundal carduri mai închis */
-    --card-shadow: rgba(255, 255, 255, 0.1); /* umbră albă foarte subtilă */
-    --button-bg: #333333;           /* butoane închis */
-    --button-text: #e0e0e0;         /* text butoane deschis */
+    --bg-color: #121212;
+    --text-color: #e0e0e0;
+    --primary-color: #4a90e2;
+    --secondary-color: #357ABD;
+    --card-bg: #1f1f1f;
+    --card-shadow: rgba(0, 0, 0, 0.7);
+    --button-bg: #2c2c2c;
+    --button-text: #e0e0e0;
 }
 
-/* Folosim variabilele pentru body și alte elemente */
 body {
     background-color: var(--bg-color);
     color: var(--text-color);
@@ -36,7 +35,6 @@ body {
     scroll-behavior: smooth;
 }
 
-/* Navbar */
 nav {
     width: 100%;
     background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
@@ -80,7 +78,6 @@ nav ul li button:focus {
     outline: none;
 }
 
-/* Titluri */
 h1 {
     margin-bottom: 25px;
     font-size: 2.8rem;
@@ -90,7 +87,6 @@ h1 {
     font-weight: 700;
 }
 
-/* Lista evenimente */
 #events-ul li {
     background: var(--card-bg);
     border-radius: 12px;
@@ -115,7 +111,6 @@ h1 {
     color: var(--text-color);
 }
 
-/* Formulare */
 form, .form-container {
     max-width: 700px;
     background-color: var(--card-bg);
@@ -161,7 +156,6 @@ textarea {
     min-height: 120px;
 }
 
-/* Butoane */
 button[type="submit"],
 input[type="submit"],
 #btn-adauga {
@@ -203,7 +197,6 @@ input[type="submit"]:hover,
     transform: scale(1.05);
 }
 
-/* Container evenimente */
 .events-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
