@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', () => {
     const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+    if (!loggedInUser) { // Dacă nu există un utilizator logat
+        window.location.href = 'login.html'; // Redirecționează
+        return; // Oprește execuția scriptului
+    }
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
     if (!loggedInUser) {
         window.location.href = 'login.html';
         return;
@@ -258,3 +265,55 @@ inputFile.addEventListener('change', () => {
     imgPreview.addEventListener("click", () => {
       inputFile.click();
     });
+if (response.ok) {
+                // ... success handling ...
+            } else {
+                // Această linie este executată dacă serverul răspunde cu un cod de eroare (ex: 404 Not Found, 500 Internal Server Error)
+                const errorData = await response.json().catch(() => ({ message: 'Eroare necunoscută' }));
+                uploadStatus.textContent = `Eroare la încărcare: ${errorData.message || response.statusText}`;
+                uploadStatus.style.color = '#dc3545';
+            }
+
+            // ... (restul codului)
+
+uploadForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const file = fileInput.files[0];
+    if (!file) {
+        uploadStatus.textContent = 'Te rugăm să selectezi un fișier.';
+        uploadStatus.style.color = 'red';
+        return;
+    }
+
+    uploadStatus.textContent = 'Încărcare document...';
+    uploadStatus.style.color = '#007bff';
+
+    // AICI VOM SIMULA ÎNCĂRCAREA
+    try {
+        // Simulează o întârziere pentru a arăta starea de "încărcare"
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Așteaptă 1.5 secunde
+
+        // Simulează succesul încărcării
+        uploadStatus.textContent = `Fișierul "${file.name}" a fost încărcat cu succes (simulat)!`;
+        uploadStatus.style.color = '#28a745';
+        fileInput.value = ''; // Golește input-ul de fișier
+        fileNameDisplay.textContent = 'Niciun fișier selectat';
+
+        // Opțional: Poți salva o referință în localStorage dacă vrei să "ții minte" fișierul,
+        // dar URL-ul va fi temporar (URL.createObjectURL) și va expira la reîncărcarea paginii.
+        // let uploadedDocs = JSON.parse(localStorage.getItem('uploadedDocs')) || [];
+        // uploadedDocs.push({ name: file.name, size: file.size, type: file.type, date: new Date().toISOString() });
+        // localStorage.setItem('uploadedDocs', JSON.stringify(uploadedDocs));
+
+    } catch (error) {
+        // Dacă apare o eroare internă în simulare (rar)
+        uploadStatus.textContent = 'A apărut o eroare la încărcare (simulată). Verifică consola pentru detalii.';
+        uploadStatus.style.color = '#dc3545';
+        console.error('Eroare la simularea încărcării documentului:', error);
+    }
+});
+const response = await fetch('http://localhost:3000/api/upload-document', { // Asigură-te că portul (3000) este corect
+    method: 'POST',
+    body: formData
+});
