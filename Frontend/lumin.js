@@ -1,7 +1,7 @@
 
-const toggleButton = document.getElementById("theme-toggle"); // IMPORTANT: Asigură-te că ID-ul este corect!
+const toggleButton = document.getElementById("theme-toggle"); 
 const body = document.body;
-const themeToggleButton = document.getElementById('theme-toggle'); // Referință suplimentară pentru buton
+const themeToggleButton = document.getElementById('theme-toggle');
 
 
 function applyTheme(mode) {
@@ -11,26 +11,25 @@ function applyTheme(mode) {
             themeToggleButton.querySelector('.icon').textContent = '☾';
         }
     } else {
-        body.classList.remove('dark-mode');
+        body.classList.remove('light-mode');
         if (themeToggleButton) {
             themeToggleButton.querySelector('.icon').textContent = '☼';
         }
     }
 }
 function applyTheme(mode) {
-    if (mode === 'linght') {
-        body.classList.add('linght-mode');
+    if (mode === 'light') {
+        body.classList.add('light-mode');
         if (themeToggleButton) {
-            themeToggleButton.querySelector('.icon').textContent = '☾';
+            themeToggleButton.querySelector('.icon').textContent = '☼';
         }
     } else {
-        body.classList.remove('linght-mode');
+        body.classList.remove('light-mode');
         if (themeToggleButton) {
             themeToggleButton.querySelector('.icon').textContent = '☼';
         }
     }
 }
-
 const savedMode = localStorage.getItem("mode");
 if (savedMode) {
     applyTheme(savedMode);
