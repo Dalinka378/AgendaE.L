@@ -1,81 +1,39 @@
- .eveniment {
-            border: 1px solid #eee;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 8px;
-            background-color: #fff;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            text-align: center;
-        }
-        .eveniment img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-        .eveniment h3 {
-            margin-top: 0;
-            color: #333;
-        }
-        .eveniment p {
-            font-size: 0.95em;
-            color: #666;
-        }
+#lista-evenimente {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 
+.eveniment {
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
 
+.eveniment:hover {
+  transform: translateY(-5px);
+}
 
+.eveniment img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
 
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-            background-color: #f4f4f4;
-        }
+.eveniment h3 {
+  font-size: 1.2rem;
+  margin: 10px 15px 5px;
+  color: #333;
+}
 
-        h1 {
-            text-align: center;
-            color: #333;
-            margin-bottom: 40px;
-        }
-
-        #evenimente-container {
-            display: flex;
-            flex-wrap: wrap; /* Permite evenimentelor să treacă pe rând nou */
-            justify-content: center; /* Centrează evenimentele pe rând */
-            gap: 20px; /* Spațiu între evenimente */
-            max-width: 1000px; /* Lățimea maximă a containerului principal */
-            margin: 0 auto; /* Centrează containerul pe pagină */
-        }
-
-        .eveniment-afisat {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 15px;
-            text-align: center;
-            width: 300px; /* Lățimea fiecărui eveniment */
-            box-sizing: border-box; /* Include padding-ul și border-ul în lățime */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between; /* Asigură că conținutul ocupă spațiul disponibil */
-        }
-
-        .eveniment-afisat img {
-            max-width: 100%;
-            height: 180px; /* Înălțime fixă pentru imagini */
-            object-fit: cover; /* Asigură că imaginea umple spațiul fără a fi distorsionată */
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .eveniment-afisat h3 {
-            margin-top: 0;
-            color: #333;
-            font-size: 1.2em;
-        }
-
-        .eveniment-afisat p {
-            font-size: 0.9em;
-            color: #555;
-            line-height: 1.4;
-        }
+.eveniment p {
+  margin: 5px 15px 10px;
+  font-size: 0.95rem;
+  color: #555;
+}
