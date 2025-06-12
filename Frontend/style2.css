@@ -207,9 +207,7 @@ input[type="submit"]:hover,
     transform: scale(1.05);
 }
 
-/* Restul stilurilor tale (slider, events-container, profile-page-content etc.)
-   ar trebui, de asemenea, să fie adaptate să folosească variabilele CSS
-   pentru a se schimba cu tema. Am lăsat doar câteva exemple aici. */
+
 
 .events-container {
     display: grid;
@@ -235,12 +233,9 @@ input[type="submit"]:hover,
 .event-title {
     font-size: 1.4rem;
     margin-bottom: 0.5rem;
-    color: var(--primary-color); /* Folosește variabila */
+    color: var(--primary-color); 
 }
 
-/* ... (continuă să adaptezi celelalte stiluri cu variabile) ... */
-
-/* Stilurile pentru dark mode din codul tău inițial */
 .main-header {
     background-color: var(--bg-color); 
     padding: 1rem 0;
