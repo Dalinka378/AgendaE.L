@@ -41,3 +41,21 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.error('Eroare la încărcarea evenimentelor:', error);
                 });
         });
+        document.addEventListener('DOMContentLoaded', () => {
+    // ... alte variabile ...
+    const navLogoutBtn = document.getElementById('nav-logout-btn');
+    // ...
+
+    // Logica pentru butonul de deconectare
+    if (navLogoutBtn) { // Această verificare este crucială
+        navLogoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('loggedInUser'); // Elimină utilizatorul din localStorage
+            alert('Ai fost deconectat!');
+            // Redirecționează către pagina principală sau de login
+            window.location.href = 'index.html'; // Sau 'login.html'
+            updateNavVisibility(); // Actualizează navigarea imediat
+        });
+    }
+
+    // ... restul funcțiilor ...
+});

@@ -1,88 +1,97 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Profil Utilizator</title>
-      <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Profil Utilizator</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="main-header">
-    <h1><a href="index.html">Agenda de Evenimente Locale</a></h1>
-    <nav class="main-nav">
-      <ul>
-        <li id="nav-register-link"><a href="register.html">Înregistrare</a></li>
-        <li id="nav-login-link"><a href="login.html">Autentificare</a></li>
-        <li><a href="evenimente.html">Evenimente</a></li>
-        <li><a href="profile.html">Profil</a></li>
-        <li id="nav-add-event-link" style="display:none;"><a href="adauga-eveniment.html">Adaugă Eveniment</a></li>
-        <li id="nav-logout-btn-container" style="display:none;">
-          <button id="nav-logout-btn">Deconectare</button>
-          <a href="index.html" class="btn-inapoi">←</a>
+  <header class="main-header">
+    <h1><a href="index.html">Agenda de Evenimente Locale</a></h1>
+    <nav class="main-nav">
+      <ul>
+        <li id="nav-register-link"><a href="register.html">Înregistrare</a></li>
+        <li id="nav-login-link"><a href="login.html">Autentificare</a></li>
+        <li><a href="evenimente.html">Evenimente</a></li>
+        <li><a href="profile.html">Profil</a></li>
+        <li id="nav-add-event-link" style="display:none;"><a href="adauga-eveniment.html">Adaugă Eveniment</a></li>
+        <li id="nav-logout-btn-container" style="display:none;">
+          <button id="nav-logout-btn">Deconectare</button>
+          <a href="index.html" class="btn-inapoi">←</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
-        </li>
-      </ul>
-    </nav>
-  </header>
+  <main class="profile-page-content">
+    <div class="container profile-container">
+      <h2>Profilul Meu</h2>
 
-  <main class="profile-page-content">
-    <div class="container profile-container">
-      <h2>Profilul Meu</h2>
+      <section class="profile-info-section">
+        <h3>Informații Cont</h3>
+        <div id="user-info">
+          <p><strong>Email:</strong> <span id="profile-email"></span></p>
+        </div>
+        <div class="edit-username-container">
+          <label for="new-username-input"><strong>Nume utilizator:</strong></label>
+          <input type="text" id="new-username-input" placeholder="Nume utilizator nou" />
+          <button id="save-username-btn" class="profile-action-btn">Salvează Nume</button>
+          <p id="username-status" class="status-msg"></p>
+        </div>
+      </section>
 
-      <section class="profile-info-section">
-        <h3>Informații Cont</h3>
-        <div id="user-info">
-          <p><strong>Email:</strong> <span id="profile-email"></span></p>
-        </div>
-        <div class="edit-username-container">
-          <label for="new-username-input"><strong>Nume utilizator:</strong></label>
-          <input type="text" id="new-username-input" placeholder="Nume utilizator nou" />
-          <button id="save-username-btn" class="profile-action-btn">Salvează Nume</button>
-          <p id="username-status" class="status-msg"></p>
-        </div>
-      </section>
+      <section class="profile-picture-section">
+        <h3>Poza de Profil</h3>
+        <div class="profile-pic-display" id="profile-pic-display">
+          <img
+            id="profile-pic-preview"
+            src="images/default-profile.png"
+            alt="Poza de profil"
+            title="Click pentru a schimba poza"
+          />
+          <p class="profile-pic-hint">Click pe imagine pentru a schimba</p>
+        </div>
+        <input type="file" id="profile-pic-input" accept="image/*" style="display: none;" />
+                <button id="upload-profile-pic-btn">Încarcă Poza</button>
+                <p id="profile-pic-status" class="status-msg"></p>
+      </section>
 
-      <section class="profile-picture-section">
-        <h3>Poza de Profil</h3>
-        <div class="profile-pic-display" id="profile-pic-display">
-          <img
-            id="profile-pic-preview"
-            src="images/default-profile.png"
-            alt="Poza de profil"
-            title="Click pentru a schimba poza"
-          />
-          <p class="profile-pic-hint">Click pe imagine pentru a schimba</p>
-        </div>
-        <input type="file" id="profile-pic-input" accept="image/*" style="display: none;" />
-        <button id="upload-btn">Alege poza de profil</button>
-      </section>
+            <section class="my-events-section">
+        <h3>Evenimentele Mele Adăugate</h3>
+        <div id="my-events-list" class="event-grid">
+                  </div>
+        <p id="no-events-msg">Nu ai adăugat încă niciun eveniment.</p>
+      </section>
 
-      <section class="my-events-section">
-        <h3>Evenimentele Mele Adăugate</h3>
-        <div id="my-events-list" class="event-grid">
-          <p id="no-events-msg">Nu ai adăugat încă niciun eveniment.</p>
-        </div>
-      </section>
+            <section>
+        <h2>Documentele Mele Încărcate</h2>
+        <div id="uploaded-documents-list">
+                  </div>
+        <p id="no-documents-msg" style="display: none;">Nu ai încărcat niciun document.</p>
+      </section>
 
-      <section class="upload-section">
-        <h3>Încarcă un document</h3>
-        <p>Selectează un fișier (.pdf, .docx, .xls, .xlsx) pentru a-l încărca.</p>
-        <form id="uploadForm" enctype="multipart/form-data" class="upload-form">
-          <input
-            type="file"
-            id="fileInput"
-            name="file"
-            accept=".pdf,.docx,.xls,.xlsx"
-            style="display: none;"
-          />
-          <button type="button" id="customUploadButton" class="upload-button">Selectează Fișier</button>
-          <span id="fileNameDisplay" style="margin-left: 10px; font-style: italic;">Niciun fișier selectat</span>
-          <button type="submit" class="upload-button submit-button">Încarcă Document</button>
-        </form>
-        <p id="uploadStatus" class="upload-status-msg"></p>
-      </section>
-    </div>
-  </main>
-   <script src="profile.js"></script>
+            <section class="upload-section">
+        <h3>Încarcă un document nou</h3>
+        <p>Selectează un fișier (.pdf, .docx, .xls, .xlsx) pentru a-l încărca.</p>
+        <form id="uploadForm" enctype="multipart/form-data" class="upload-form">
+          <input
+            type="file"
+            id="fileInput"
+            name="file"
+            accept=".pdf,.docx,.xls,.xlsx"
+            style="display: none;"
+          />
+          <button type="button" id="customUploadButton" class="upload-button">Selectează Fișier</button>
+          <span id="fileNameDisplay" style="margin-left: 10px; font-style: italic;">Niciun fișier selectat</span>
+          <button type="submit" class="upload-button submit-button">Încarcă Document</button>
+        </form>
+        <p id="uploadStatus" class="upload-status-msg"></p>
+      </section>
+    </div>
+  </main>
+      <script src="main.js"></script>    <script src="profile.js"></script>
+   <script src="displayEvents.js"></script>
+   <script src="displayDocuments.js"></script>
 </body>
 </html>
