@@ -9,13 +9,11 @@ function applyTheme(mode) {
         body.classList.add('dark-mode');
         if (themeToggleButton) {
             themeToggleButton.querySelector('.icon').textContent = '🌙';
-            themeToggleButton.querySelector('.text').textContent = 'Mod Luminos';
         }
     } else {
         body.classList.remove('dark-mode');
         if (themeToggleButton) {
             themeToggleButton.querySelector('.icon').textContent = '☀️';
-            themeToggleButton.querySelector('.text').textContent = 'Mod Întunecat';
         }
     }
 }
