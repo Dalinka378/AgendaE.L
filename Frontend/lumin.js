@@ -8,16 +8,28 @@ function applyTheme(mode) {
     if (mode === 'dark') {
         body.classList.add('dark-mode');
         if (themeToggleButton) {
-            themeToggleButton.querySelector('.icon').textContent = '🌙';
+            themeToggleButton.querySelector('.icon').textContent = '☾';
         }
     } else {
         body.classList.remove('dark-mode');
         if (themeToggleButton) {
-            themeToggleButton.querySelector('.icon').textContent = '☀️';
+            themeToggleButton.querySelector('.icon').textContent = '☼';
         }
     }
 }
-
+function applyTheme(mode) {
+    if (mode === 'linght') {
+        body.classList.add('linght-mode');
+        if (themeToggleButton) {
+            themeToggleButton.querySelector('.icon').textContent = '☾';
+        }
+    } else {
+        body.classList.remove('linght-mode');
+        if (themeToggleButton) {
+            themeToggleButton.querySelector('.icon').textContent = '☼';
+        }
+    }
+}
 
 const savedMode = localStorage.getItem("mode");
 if (savedMode) {
