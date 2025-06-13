@@ -260,3 +260,379 @@ input[type="submit"]:hover,
     background-color: var(--text-color);
     color: var(--bg-color);
 }
+/* în dark_mode_styles.css */
+body.dark-mode {
+    background-color: #1a1a1a; /* Un gri foarte închis sau negru */
+    color: #eeeeee;           /* Culoarea textului principal în dark mode */
+}
+/* Dacă ai un container de genul */
+.main-content-area {
+    background-color: white; /* În light mode */
+    color: #333;
+}
+
+/* În dark mode */
+body.dark-mode .main-content-area {
+    background-color: #2b2b2b; /* Un gri închis pentru carduri/containere */
+    color: #cccccc;
+}
+/* Stilul default al cardului */
+.eveniment-afisat {
+    background-color: white;
+    border: 1px solid #ddd;
+}
+
+/* Stilul cardului în dark mode */
+body.dark-mode .eveniment-afisat {
+    background-color: #3a3a3a;
+    border-color: #555;
+    color: #eeeeee; /* Culoarea textului din card */
+}
+
+body.dark-mode .eveniment-afisat h3 {
+    color: #e0e0e0; /* Culoarea titlurilor din card */
+}
+
+body.dark-mode .eveniment-afisat p {
+    color: #bbbbbb; /* Culoarea paragrafelor din card */
+}
+body.dark-mode a {
+    color: #88ccff; /* O culoare deschisă pentru linkuri */
+}
+
+body.dark-mode button {
+    background-color: #555;
+    color: white;
+    border: 1px solid #777;
+}
+/* Stiluri pentru modul dark */
+body.dark-mode {
+    background-color: #1a1a1a; /* Un gri foarte închis sau negru pentru fundal */
+    color: #eeeeee;           /* Culoarea textului principal în dark mode (aproape alb) */
+}
+
+/* Dacă ai alte elemente specifice care au propriile culori de text,
+   va trebui să le specifici și pe ele pentru dark mode, de exemplu: */
+
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff; /* Albul pur pentru titluri */
+}
+
+body.dark-mode p {
+    color: #cccccc; /* Un gri deschis pentru paragrafe, pentru o lizibilitate mai bună */
+}
+
+body.dark-mode a {
+    color: #88ccff; /* O culoare deschisă, vizibilă pentru linkuri */
+}
+
+/* Și pentru orice alte elemente care au text, cum ar fi în carduri, etc. */
+body.dark-mode .nume-clasa-card { /* Ex: .eveniment-afisat sau .image-description */
+    color: #e0e0e0;
+}
+/* În fișierul tău dark_mode_styles.css */
+
+body.dark-mode {
+    background-color: #1a1a1a; /* Fundalul general al paginii */
+    color: #eeeeee;           /* Culoarea textului implicită pentru toată pagina în dark mode (aproape alb) */
+}
+/* Pentru toate titlurile (h1-h6) în dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff; /* Albul pur pentru titluri */
+}
+
+/* Pentru toate paragrafele (p) în dark mode */
+body.dark-mode p {
+    color: #cccccc; /* Un gri deschis pentru paragrafe, pentru o lizibilitate mai bună */
+}
+/* Exemplu: dacă ai un div cu clasa 'welcome-section' */
+.welcome-section {
+    background-color: white; /* Culoare implicită în light mode */
+    color: #333;
+}
+
+body.dark-mode .welcome-section {
+    background-color: #2b2b2b; /* Un gri închis pentru această secțiune */
+    color: #eeeeee; /* Text alb */
+}
+
+/* Asigură-te că textul din interior este vizibil */
+body.dark-mode .welcome-section h2, /* Dacă ai titluri aici */
+body.dark-mode .welcome-section p {
+    color: #eeeeee;
+}
+body.dark-mode .auth-button, /* sau clasa reală a butoanelor tale */
+body.dark-mode .register-button {
+    background-color: #0056b3; /* O nuanță mai închisă de albastru pentru dark mode, sau orice altă culoare */
+    color: #ffffff; /* Text alb pe butoane */
+    border-color: #004085;
+}
+/* Pentru titlul "Evenimente Recente" */
+#evenimente-container + h1 { /* Sau clasa/ID-ul titlului "Evenimente Recente" */
+    color: #ffffff;
+}
+
+/* Pentru fiecare card de eveniment (ex: .eveniment-afisat din codul JS) */
+.eveniment-afisat {
+    background-color: white; /* În light mode */
+    border: 1px solid #ddd;
+}
+
+body.dark-mode .eveniment-afisat {
+    background-color: #3a3a3a; /* Fundal întunecat pentru carduri */
+    border-color: #555;      /* Bordură mai vizibilă */
+    color: #eeeeee;          /* Culoarea textului implicită în card */
+}
+
+/* Asigură-te că titlurile, datele și descrierile din card sunt albe/gri deschis */
+body.dark-mode .eveniment-afisat h3 {
+    color: #e0e0e0;
+}
+body.dark-mode .eveniment-afisat p {
+    color: #bbbbbb;
+}
+/* Stiluri pentru Dark Mode - Acestea trebuie să suprascrie stilurile din style.css */
+
+body.dark-mode {
+    background-color: #121212; /* Fundal foarte închis pentru întreaga pagină */
+    color: #e0e0e0;           /* Culoarea textului implicită (gri deschis) */
+}
+
+/* Header */
+body.dark-mode .main-header {
+    background-color: #1f1f1f; /* Un gri mai închis pentru header */
+    color: #ffffff;
+}
+
+body.dark-mode .main-header a {
+    color: #ffffff;
+}
+
+body.dark-mode .main-nav button {
+    background-color: #0056b3; /* Un albastru închis pentru butoane */
+    color: #ffffff;
+    border-color: #004085;
+}
+
+/* Secțiunile "platformă" - Bine ai venit!, Evenimente Recente, Despre... */
+body.dark-mode .welcome-section,
+body.dark-mode .recent-events-section,
+body.dark-mode .about-section {
+    background-color: #1f1f1f; /* Fundal mai închis pentru secțiuni */
+    color: #e0e0e0;           /* Text deschis */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* Umbră mai pronunțată */
+}
+
+/* Titluri în dark mode */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+    color: #ffffff; /* Albul pur pentru toate titlurile */
+}
+
+/* Paragrafe în dark mode */
+body.dark-mode p {
+    color: #cccccc; /* Gri deschis pentru lizibilitate */
+}
+
+/* Butoanele de autentificare/înregistrare din welcome-section */
+body.dark-mode .auth-buttons button {
+    background-color: #004085; /* Un albastru mai închis pentru butoane */
+    color: #ffffff;
+    border: 1px solid #002b5c;
+}
+
+/* Stiluri pentru cardurile de evenimente */
+body.dark-mode .eveniment,
+body.dark-mode .eveniment-afisat {
+    background-color: #2b2b2b; /* Fundal închis pentru carduri */
+    border-color: #444;      /* Bordură mai închisă */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    color: #e0e0e0;          /* Textul general din card */
+}
+
+/* Titluri și paragrafe specifice din carduri */
+body.dark-mode .eveniment h3,
+body.dark-mode .eveniment-afisat h3 {
+    color: #ffffff;
+}
+body.dark-mode .eveniment p,
+body.dark-mode .eveniment-afisat p {
+    color: #cccccc;
+}
+
+/* Alte elemente, cum ar fi linkuri */
+body.dark-mode a {
+    color: #88ccff; /* Linkuri deschise */
+}
+/* Stiluri pentru elementele comune în modul light */
+
+body {
+    background-color: #f4f4f4; /* Fundalul default al paginii */
+    color: #333;             /* Culoarea default a textului */
+    font-family: Arial, sans-serif;
+}
+
+.main-header {
+    background-color: #333; /* Culoare de bază pentru header */
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+.main-nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-nav li {
+    margin: 0 15px;
+}
+
+.main-nav a {
+    color: white; /* Linkuri albe în header */
+    text-decoration: none;
+}
+
+.main-nav button {
+    background-color: #007bff; /* Culoare de bază pentru butoanele de navigare */
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Stiluri pentru "platforme" în modul light */
+.welcome-section,
+.recent-events-section, /* Nouă clasă pentru secțiunea de evenimente recente */
+.about-section {
+    background-color: white; /* Fundal alb pentru aceste secțiuni */
+    padding: 30px;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    max-width: 900px; /* Lățime maximă pentru conținut */
+    text-align: center;
+}
+
+/* Stiluri pentru butoanele de autentificare/înregistrare din welcome-section */
+.auth-buttons button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Stiluri pentru Evenimente (dacă sunt hardcoded în index.html sau aduse de even.js) */
+#evenimente-container { /* Containerul care va ține evenimentele (deja ai flexbox aici) */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px; /* Spațiu între titlu și evenimente */
+}
+
+.eveniment, /* Clasa pentru evenimentele individuale */
+.eveniment-afisat { /* Dacă ai folosit o clasă diferită pentru evenimente aduse de JS */
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    padding: 15px;
+    text-align: center;
+    width: 300px; /* Lățimea fiecărui eveniment pentru 3 pe rând */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.eveniment img,
+.eveniment-afisat img {
+    max-width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+/* Stiluri pentru Dark Mode */
+
+body.dark-mode {
+    background-color: #121212; /* Fundalul general al paginii */
+    color: #e0e0e0;           /* Culoarea textului implicită */
+}
+
+/* ... alte stiluri dark mode pentru header, butoane etc. ... */
+
+/* Stiluri pentru secțiunea "Evenimente Recente" */
+/* Aceasta este CLASA pe care am adăugat-o în HTML la <section> */
+body.dark-mode .recent-events-section {
+    background-color: #1f1f1f; /* Un gri închis pentru fundalul acestei secțiuni (ar trebui să fie vizibil diferit de background-ul body) */
+    color: #e0e0e0;           /* Culoarea textului implicită pentru secțiune */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5); /* O umbră mai vizibilă */
+}
+
+/* Asigură-te că titlul h1 din această secțiune este vizat corect */
+body.dark-mode .recent-events-section h1 {
+    color: #ffffff; /* Albul pur pentru titlu */
+}
+
+/* Dacă ai un background-color pe #evenimente-container, și el trebuie schimbat */
+body.dark-mode #evenimente-container {
+    /* Poate nu vrei un background separat aici, dar dacă ai, ajustează-l */
+    /* background-color: #2b2b2b; */
+}
+
+/* Stiluri pentru cardurile individuale de evenimente din interior */
+body.dark-mode .eveniment,
+body.dark-mode .eveniment-afisat {
+    background-color: #2b2b2b; /* Fundal închis pentru carduri */
+    border-color: #444;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    color: #e0e0e0;
+}
+
+body.dark-mode .eveniment h3,
+body.dark-mode .eveniment-afisat h3 {
+    color: #ffffff;
+}
+body.dark-mode .eveniment p,
+body.dark-mode .eveniment-afisat p {
+    color: #cccccc;
+}
+html, body {
+    background-color: #f4f4f4; /* Aceasta ar putea fi mai specifică */
+}
+html.dark-mode, body.dark-mode { /* Aici e cheia! */
+    background-color: #121212 !important; /* Adaugă !important doar dacă e absolut necesar și după ce ai încercat celelalte soluții */
+    color: #e0e0e0;
+}
+body.dark-mode {
+    background-color: #121212 !important; /* TESTEAZĂ CU ASTA */
+    color: #e0e0e0;
+}
+body.dark-mode .index-main-content {
+    background-color: #1a1a1a; /* Un gri închis pentru conținutul principal, diferit de body */
+    color: #e0e0e0;
+}
