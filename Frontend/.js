@@ -1,8 +1,22 @@
-// Exemplu în Frontend JavaScript (ex: într-un fișier JS asociat cu login.html)
+const BACKEND_URL = 'http://localhost:3000/api';
+
+async function checkServerStatus() {
+    try {
+        const response = await fetch(`${BACKEND_URL}/status`);
+        const data = await response.json();
+        if (response.ok) {
+            console.log('Status server:', data.message);
+        } else {
+            console.error('Eroare status server:', data.message);
+        }
+    } catch (error) {
+        console.error('Eroare rețea la verificarea statusului serverului:', error);
+    }
+}
 
 async function handleLogin(username, password) {
     try {
-        const response = await fetch('http://localhost:3000/api/login', { // Aici vei pune adresa serverului tău backend
+        const response = await fetch(`${BACKEND_URL}/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -10,22 +24,29 @@ async function handleLogin(username, password) {
             body: JSON.stringify({ username, password })
         });
 
-        const data = await response.json(); // Așteaptă răspunsul JSON
+        const data = await response.json();
 
-        if (response.ok) { // Status HTTP 2xx
+        if (response.ok) {
             console.log('Login reușit!', data);
-            // Salvează token-ul și redirecționează
+            localStorage.setItem('loggedInUser', JSON.stringify({
+                email: username,
+                username: data.username,
+                token: data.token
+            }));
+            window.location.href = 'evenimente.html';
+            return true;
         } else {
             console.error('Eroare la login:', data.message);
-            // Afișează mesaj de eroare utilizatorului
+            alert(`Eroare la login: ${data.message}`);
+            return false;
         }
     } catch (error) {
-        console.error('Eroare rețea sau server:', error);
-        // Afișează eroare utilizatorului
+        console.error('Eroare rețea sau server la login:', error);
+        alert('Eroare de conexiune la server. Încearcă mai târziu.');
+        return false;
     }
 }
 
-// Pentru încărcare imagini (cum am discutat anterior):
 async function uploadImages(files) {
     const formData = new FormData();
     files.forEach((file, index) => {
@@ -33,19 +54,24 @@ async function uploadImages(files) {
     });
 
     try {
-        const response = await fetch('http://localhost:3000/api/upload-foto', { // Aici vei pune adresa serverului tău backend
+        const response = await fetch(`${BACKEND_URL}/upload-foto`, {
             method: 'POST',
-            body: formData, // Nu seta 'Content-Type' pentru FormData, browserul o face automat
+            body: formData,
         });
 
         const data = await response.json();
 
         if (response.ok) {
-            console.log('Imagini încărcate cu succes!', data);
+            console.log('Imagini încărcate cu succes!', data.imageUrls);
+            return data.imageUrls;
         } else {
             console.error('Eroare la încărcarea imaginilor:', data.message);
+            alert(`Eroare la încărcarea imaginilor: ${data.message}`);
+            return null;
         }
     } catch (error) {
-        console.error('Eroare rețea sau server:', error);
+        console.error('Eroare rețea sau server la încărcarea imaginilor:', error);
+        alert('Eroare de conexiune la server pentru încărcarea imaginilor.');
+        return null;
     }
 }
