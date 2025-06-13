@@ -679,3 +679,117 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+// O parte din profile.js
+
+document.addEventListener('DOMContentLoaded', () => {
+    // ... (restul codului existent) ...
+
+    // Referințe la elementele HTML pentru poza de profil
+    const profilePicPreview = document.getElementById('profile-pic-preview');
+    const profilePicInput = document.getElementById('profile-pic-input');
+    const uploadProfilePicBtn = document.getElementById('upload-profile-pic-btn');
+    const profilePicStatus = document.getElementById('profile-pic-status');
+
+    // ... (restul referințelor la elemente HTML) ...
+
+    // 4. Gestionarea pozei de profil (upload și previzualizare)
+    // Inițializează previzualizarea cu poza existentă (Data URL) sau default
+    if (profilePicPreview) {
+        // Asigură-te că profilePicUrl conține Data URL, nu un URL blob temporar
+        profilePicPreview.src = loggedInUser.profilePicUrl || 'images/default-profile.png';
+    }
+
+    // Deschide selectorul de fișiere la click pe imaginea de previzualizare
+    if (profilePicPreview && profilePicInput) {
+        profilePicPreview.addEventListener('click', () => {
+            profilePicInput.click();
+        });
+
+        // Previzualizează imaginea selectată și validează tipul/dimensiunea
+        profilePicInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const validImageTypes = ['image/jpeg', 'image/png', 'image/gif'];
+                if (!validImageTypes.includes(file.type)) {
+                    profilePicStatus.textContent = 'Selectează o imagine validă (jpg, png, gif).';
+                    profilePicStatus.style.color = 'red';
+                    profilePicInput.value = ''; // Resetează inputul
+                    profilePicPreview.src = loggedInUser.profilePicUrl || 'images/default-profile.png'; // Revert la poza curentă
+                    return;
+                }
+                if (file.size > 2 * 1024 * 1024) { // Limită 2MB
+                    profilePicStatus.textContent = 'Imaginea trebuie să fie mai mică de 2MB.';
+                    profilePicStatus.style.color = 'red';
+                    profilePicInput.value = '';
+                    profilePicPreview.src = loggedInUser.profilePicUrl || 'images/default-profile.png'; // Revert la poza curentă
+                    return;
+                }
+
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    profilePicPreview.src = e.target.result; // Previzualizează imaginea (va fi un Data URL)
+                };
+                reader.readAsDataURL(file); // Citește fișierul ca Data URL
+                profilePicStatus.textContent = 'Fișier selectat. Apasă "Încarcă Poza" pentru a salva.';
+                profilePicStatus.style.color = 'orange';
+            } else {
+                profilePicPreview.src = loggedInUser.profilePicUrl || 'images/default-profile.png'; // Revert la imaginea existentă
+                profilePicStatus.textContent = 'Niciun fișier selectat.';
+                profilePicStatus.style.color = '';
+            }
+        });
+    }
+
+    // Gestionarea încărcării pozei de profil (cu salvare persistentă Base64)
+    if (uploadProfilePicBtn) {
+        uploadProfilePicBtn.addEventListener('click', async () => {
+            const file = profilePicInput.files[0];
+            if (!file) {
+                profilePicStatus.textContent = 'Te rog selectează o poză înainte de a încărca.';
+                profilePicStatus.style.color = 'red';
+                return;
+            }
+
+            profilePicStatus.textContent = 'Încărcare poză...';
+            profilePicStatus.style.color = '#007bff';
+            uploadProfilePicBtn.disabled = true;
+
+            try {
+                // Converteste fișierul în Data URL (Base64) pentru stocare persistentă
+                const base64Image = await new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onload = (e) => resolve(e.target.result);
+                    reader.onerror = (error) => reject(error);
+                    reader.readAsDataURL(file); // Aceasta este cheia!
+                });
+
+                // Simulează o întârziere pentru a arăta "încărcarea"
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Actualizează poza în obiectul utilizatorului logat și în lista tuturor utilizatorilor
+                loggedInUser.profilePicUrl = base64Image; // Salvează Data URL
+                localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+
+                let users = JSON.parse(localStorage.getItem('users')) || [];
+                const userIndex = users.findIndex(u => u.email === loggedInUser.email);
+                if (userIndex > -1) {
+                    users[userIndex].profilePicUrl = base64Image; // Salvează Data URL
+                    localStorage.setItem('users', JSON.stringify(users));
+                }
+
+                profilePicPreview.src = base64Image; // Actualizează imaginea afișată
+                profilePicStatus.textContent = 'Poza de profil a fost actualizată!';
+                profilePicStatus.style.color = 'green';
+                profilePicInput.value = ''; // Golește inputul fișierului
+            } catch (error) {
+                profilePicStatus.textContent = 'Eroare la încărcarea pozei. Te rog încearcă din nou.';
+                profilePicStatus.style.color = 'red';
+                console.error('Eroare la upload poza de profil:', error);
+            } finally {
+                uploadProfilePicBtn.disabled = false; // Reactivează butonul
+            }
+        });
+    }
+
+    // ... (restul codului din profile.js) ...
+});
