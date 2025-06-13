@@ -601,7 +601,7 @@ body.dark-mode .recent-events-section h1 {
 /* Dacă ai un background-color pe #evenimente-container, și el trebuie schimbat */
 body.dark-mode #evenimente-container {
     /* Poate nu vrei un background separat aici, dar dacă ai, ajustează-l */
-    /* background-color: #2b2b2b; */
+    background-color: #2b2b2b; 
 }
 
 /* Stiluri pentru cardurile individuale de evenimente din interior */
